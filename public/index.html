@@ -9,7 +9,12 @@
     <button id="checkout">Pay</button>
 
     <script>
-        
+        const button = document.getElementById('checkout')
+        button.addEventListener('click', async() => {
+            const res = await fetch('/payments/create-checkout-session')
+            const data = await res.json()
+            window.location.href = data.url
+        })
     </script>
 </body>
 </html>
